@@ -48,23 +48,12 @@ def obtener_lado(cadena: str, char: str, lado: Literal['i', 'd']) -> str:
 def eliminar_bicondicional(cadena: str) -> str:
     """Elimina el bicondicional de la cadena de entrada."""
 
-    index = cadena.find("⇔")
+    lado_i = obtener_lado(cadena, '⇔', 'i')
+    lado_d = obtener_lado(cadena, '⇔', 'd')
 
-    i = index
+    return f"({lado_i} ⇒ {lado_d}) ∧ ({lado_d} ⇒ {lado_i})"
 
-    char = ''
-    closed_parentesis = 0
-
-    while char != '(' or closed_parentesis != -1:
-        i -= 1
-        char = cadena[i]
-
-        if char == ')':
-            closed_parentesis += 1
-        elif char == '(':
-            closed_parentesis -= 1
-
-    return cadena[i+1:index]
+   
 
 
 print(obtener_lado("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))", '⇒', 'i'))
