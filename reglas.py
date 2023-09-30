@@ -8,11 +8,10 @@ l = ['∀', '∃', '¬', '∧', '∨', '⇒', '⇔', '(', ')', ',', ' ']
 
 
 def obtener_lado(cadena: str, char: str, lado: Literal['i', 'd']) -> str:
-
     step: int
     p1: str
     p2: str
-    
+
     if lado == 'i':
         step = -1
         p1 = '('
@@ -36,7 +35,7 @@ def obtener_lado(cadena: str, char: str, lado: Literal['i', 'd']) -> str:
             parentesis += 1
         elif char == p1:
             parentesis -= 1
-    
+
     res = (cadena[index+1:i+1] if lado == 'd' else cadena[i:index]).strip()
 
     if parentesis == -1:
@@ -53,7 +52,5 @@ def eliminar_bicondicional(cadena: str) -> str:
 
     return f"({lado_i} ⇒ {lado_d}) ∧ ({lado_d} ⇒ {lado_i})"
 
-   
 
-
-print(obtener_lado("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))", '⇒', 'i'))
+print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
