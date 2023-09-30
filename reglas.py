@@ -52,5 +52,15 @@ def eliminar_bicondicional(cadena: str) -> str:
 
     return f"({lado_i} ⇒ {lado_d}) ∧ ({lado_d} ⇒ {lado_i})"
 
+def eliminar_implicacion(cadena: str) -> str:
+    """Elimina la implicación de la cadena de entrada."""
+
+    lado_i = obtener_lado(cadena, '⇒', 'i')
+    lado_d = obtener_lado(cadena, '⇒', 'd')
+
+    return f"¬{lado_i} ∨ {lado_d}"
+
+
+
 
 print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
