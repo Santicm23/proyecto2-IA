@@ -1,27 +1,33 @@
 
 # "∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"
 
+l = ['∧', '∨', '⇒', '⇔', '.']
 
-def eliminar_bicondicional(cadena: str) -> str:
+
+def separacionElementos(cadena: str) -> list:
     """Elimina el bicondicional de la cadena de entrada."""
-    
-    index = cadena.find("⇔")
+    lstrings= []
+    lchars= []
+    tamCadena = len(cadena)
+    index=0
+    char= ''
+    i=0
+    while i != tamCadena:
+        char=cadena[i]
+        if char in l:
+            lchars.append(i)
+        i+=1
+        j: int =0
+    for i in range(len(lchars)):
+        cadenaux = ''
+        while j != (lchars[i]):
+            if cadena[j] not in l:
+                cadenaux += cadena[j]
+            j+=1
+        lstrings.append(cadenaux)
+        j=lchars[i]
 
-    i = index - 1
+    print(lstrings)
 
-    char = ''
-    closed_parentesis = 0
-
-    while char != '(' or closed_parentesis != 0:
-        char = cadena[i]
-        i -= 1
-
-        if char == ')':
-            closed_parentesis += 1
-        elif char == '(':
-            closed_parentesis -= 1
-    
-    return cadena[i:index + 1]
-
-print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
+(separacionElementos("∀x Romano(x)⇒(Leal(x, Cesar)⇔Odia(x, Cesar))."))
     
