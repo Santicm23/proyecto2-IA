@@ -29,7 +29,7 @@ def separacionElementos(cadena: str) -> list:
 
     print(lstrings)
 
-(separacionElementos("∀x Romano(x)⇒(Leal(x, Cesar)⇔Odia(x, Cesar))."))
+# (separacionElementos("∀x Romano(x)⇒(Leal(x, Cesar)⇔Odia(x, Cesar))."))
 
 def obtener_lado(cadena: str, char: str, lado: Literal['i', 'd']) -> str:
     step: int
@@ -91,4 +91,4 @@ def cambiar_signo(elemento: str) -> str:
     else:
         return '¬' + elemento
 
-print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
+# print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
