@@ -1,3 +1,5 @@
+
+
 '''
 1. ¬Niño(Scrooge) ∨ Ama(Scrooge,PapáNoel)
 2. ¬Ama(Scrooge,PapáNoel) ∨ ¬Reno(Rodolfo) ∨ Ama(Scrooge,Rodolfo)
