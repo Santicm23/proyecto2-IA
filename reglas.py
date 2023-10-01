@@ -87,6 +87,3 @@ def eliminar_implicacion(cadena: str) -> str:
     return f"(¬{lado_i} ∨ {lado_d})"
 
 print(eliminar_implicacion('(Leal(x, Cesar) ⇒ Odia(x, Cesar))'))
-
-def negacion_literales(cadena: str) ->str:
-    
