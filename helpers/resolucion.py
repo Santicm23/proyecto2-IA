@@ -3,26 +3,25 @@ import time
 
 from .reglas import cambiar_signo
 
-def reducir_elemento(clausula: str, elemento: str) -> str:
-    """Reduce los elementos de la lista de cadenas de entrada."""
-
-    l_clausula = clausula.split('∨')
-    l_clausula = list(map(lambda x: x.strip(), l_clausula))
-    try:
-        l_clausula.remove(cambiar_signo(elemento))
-    except ValueError:
-        pass
-
-    return ' ∨ '.join(l_clausula)
-
 
 def reducir_clausulas(clausula1: str, clausula2: str) -> str:
-    clausula = reducir_elemento(clausula1, clausula2)
+    """Reduce las clausulas de la lista de cadenas de entrada."""
 
-    if clausula == clausula1:
-        clausula = reducir_elemento(clausula2, clausula1)
-    
-    return clausula
+    l1 = list(map(lambda x: x.strip(), clausula1.split('∨')))
+    l2 = list(map(lambda x: x.strip(), clausula2.split('∨')))
+
+    l1_inicial = l1.copy()
+    l2_inicial = l2.copy()
+
+    for el in l1:
+        if cambiar_signo(el) in l2:
+            l1.remove(el)
+            l2.remove(cambiar_signo(el))
+
+    if l1 == l1_inicial and l2 == l2_inicial:
+        return ' ∨ '.join(l1)
+
+    return ' ∨ '.join(l1 + l2)
 
 
 def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
