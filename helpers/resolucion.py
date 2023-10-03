@@ -19,7 +19,7 @@ def reducir_clausulas(clausula1: str, clausula2: str) -> str:
             l2.remove(cambiar_signo(el))
 
     if l1 == l1_inicial and l2 == l2_inicial:
-        return ' ∨ '.join(l1)
+        return clausula1
 
     return ' ∨ '.join(l1 + l2)
 
