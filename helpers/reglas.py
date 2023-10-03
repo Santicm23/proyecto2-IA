@@ -1,7 +1,6 @@
 
 from typing import Literal
 
-# "∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"
 
 l = ['∧', '∨', '⇒', '⇔', '.']
 
@@ -30,7 +29,7 @@ def separacionElementos(cadena: str) -> list:
 
     print(lstrings)
 
-(separacionElementos("∀x Romano(x)⇒(Leal(x, Cesar)⇔Odia(x, Cesar))."))
+# (separacionElementos("∀x Romano(x)⇒(Leal(x, Cesar)⇔Odia(x, Cesar))."))
 
 def obtener_lado(cadena: str, char: str, lado: Literal['i', 'd']) -> str:
     step: int
@@ -68,7 +67,6 @@ def obtener_lado(cadena: str, char: str, lado: Literal['i', 'd']) -> str:
 
     return res
 
-
 def eliminar_bicondicional(cadena: str) -> str:
     """Elimina el bicondicional de la cadena de entrada."""
 
@@ -77,7 +75,10 @@ def eliminar_bicondicional(cadena: str) -> str:
 
     return f"({lado_i} ⇒ {lado_d}) ∧ ({lado_d} ⇒ {lado_i})"
 
+def eliminar_implicacion(cadena: str) -> str:
+    """Elimina la implicación de la cadena de entrada."""
 
+<<<<<<< HEAD:reglas.py
 print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
 
 def eliminar_implicacion(cadena: str) -> str:
@@ -87,3 +88,19 @@ def eliminar_implicacion(cadena: str) -> str:
     return f"(¬{lado_i} ∨ {lado_d})"
 
 print(eliminar_implicacion('(Leal(x, Cesar) ⇒ Odia(x, Cesar))'))
+=======
+    lado_i = obtener_lado(cadena, '⇒', 'i')
+    lado_d = obtener_lado(cadena, '⇒', 'd')
+
+    return f"¬{lado_i} ∨ {lado_d}"
+
+def cambiar_signo(elemento: str) -> str:
+    """Cambia el signo de la cadena de entrada."""
+
+    if elemento[0] == '¬':
+        return elemento[1:]
+    else:
+        return '¬' + elemento
+
+# print(eliminar_bicondicional("∀x Romano(x) ⇒ (Leal(x, Cesar) ⇔ Odia(x, Cesar))"))
+>>>>>>> d4cdc2770d38ebd67ded9aa702e724be89420d7e:helpers/reglas.py
