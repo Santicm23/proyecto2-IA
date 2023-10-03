@@ -47,5 +47,5 @@ ejemplo2 = {
         '¬Hombre(Marco) ∨ ¬Gobernante(Cesar) ∨ ¬IntentaAsesinar(Marco,Cesar) ∨ ¬Leal(Marco,Cesar)',
         'IntentaAsesinar(Marco,Cesar)'
     ],
-    'pregunta': 'Odia(Marco,Cesar)'
+    'pregunta': '¬Odia(Marco,Cesar)'
 }
