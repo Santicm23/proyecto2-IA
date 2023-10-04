@@ -24,10 +24,10 @@ def reducir_clausulas(clausula1: str, clausula2: str) -> str:
     return ' ∨ '.join(l1 + l2)
 
 
-l:list= []
 
 def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
     """Realiza la inferencia por resolución de la cadena de entrada."""
+    l: list = []
 
     estado_anterior = None
     estado = cambiar_signo(pregunta)
