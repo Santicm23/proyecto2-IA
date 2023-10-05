@@ -58,11 +58,11 @@ def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
     if res != clausula1 and res != clausula2:
         return res
 
-    res = reducir_clausulas_recursivo(clausula1, clausula2, constantes1 + variables1, variables2)
+    res = reducir_clausulas_recursivo(clausula1, clausula2, constantes1, variables2)
     if res != clausula1 and res != clausula2:
         return res
     
-    return reducir_clausulas_recursivo(clausula2, clausula1, constantes2 + variables2, variables1)
+    return reducir_clausulas_recursivo(clausula2, clausula1, constantes2, variables1)
 
 
 def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
@@ -82,7 +82,10 @@ def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
             if estado == '':
                 return True
             elif estado not in clausulas and estado != estado_anterior:
-                print(f'{estado_anterior} | {clausula} | {estado}')
+                print ("Estado anterior || Clausula a reducir: ")
+                print(estado_anterior + ', ' + clausula + '\n')
+                print('Clausulas resultantes: ')
+                print(estado + '\n')
                 time.sleep(0.5)
                 break
     return False
