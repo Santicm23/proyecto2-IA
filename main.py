@@ -18,7 +18,7 @@ def main() -> None:
 
     ejemplo = leer_clausulas(ruta)
 
-    print(inferencia_resolucion(ejemplo['clausulas'], ejemplo['pregunta']))
+    inferencia_resolucion(ejemplo['clausulas'], ejemplo['pregunta'])
 
 
 if __name__ == '__main__':

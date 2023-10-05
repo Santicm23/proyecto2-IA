@@ -84,10 +84,16 @@ def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
             estado = reducir_clausulas_con_variables(clausula, estado_anterior)
 
             if estado == '':
-                print(f'{estado_anterior} | {clausula} | {estado}')
+                print("Estado anterior || Clausula a reducir: ")
+                print(estado_anterior + ', ' + clausula + '\n')
+                print('Fin resolución: Verdadero\n')
                 return True
             elif estado not in clausulas and estado != estado_anterior:
-                print(f'{estado_anterior} | {clausula} | {estado}')
+                print ("Estado anterior || Clausula a reducir: ")
+                print(estado_anterior + ', ' + clausula + '\n')
+                print('Clausulas resultantes: ')
+                print(estado + '\n')
                 time.sleep(0.5)
                 break
+    print('Fin resolución: Falso\n')
     return False
