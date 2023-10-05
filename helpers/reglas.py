@@ -29,6 +29,8 @@ def obtener_constantes(clausula: str) -> set[str]:
     for item in re.findall(regex, clausula):
         if ',' in item:
             l += item.split(',')
+        else:
+            l.append(item)
 
     return set(filter(lambda s: not s.islower(), l))
 
