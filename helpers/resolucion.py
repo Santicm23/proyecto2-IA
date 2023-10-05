@@ -32,14 +32,17 @@ def reducir_clausulas_recursivo(
 ) -> str:
     for constante in constantes:
         for variable in variables:
-            clausula_temp = reemplazar_variable(clausula_reemplazar, variable, constante)
+            clausula_temp = reemplazar_variable(
+                clausula_reemplazar, variable, constante)
             res = reducir_clausulas(clausula_temp, clausula_reducir)
             if res != clausula_reducir and res != clausula_temp:
                 return res
             else:
-                consts_temp = list(filter(lambda x: x != constante, constantes))
+                consts_temp = list(
+                    filter(lambda x: x != constante, constantes))
                 vars_temp = list(filter(lambda x: x != variable, variables))
-                res = reducir_clausulas_recursivo(clausula_reducir, clausula_temp, consts_temp, vars_temp)
+                res = reducir_clausulas_recursivo(
+                    clausula_reducir, clausula_temp, consts_temp, vars_temp)
                 if res != clausula_reducir and res != clausula_temp:
                     return res
     return clausula_reducir
@@ -58,11 +61,12 @@ def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
     if res != clausula1 and res != clausula2:
         return res
 
-    res = reducir_clausulas_recursivo(clausula1, clausula2, constantes1, variables2)
+    res = reducir_clausulas_recursivo(
+        clausula1, clausula2, constantes1 + variables1, variables2)
     if res != clausula1 and res != clausula2:
         return res
-    
-    return reducir_clausulas_recursivo(clausula2, clausula1, constantes2, variables1)
+
+    return reducir_clausulas_recursivo(clausula2, clausula1, constantes2 + variables2, variables1)
 
 
 def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
@@ -80,6 +84,7 @@ def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
             estado = reducir_clausulas_con_variables(clausula, estado_anterior)
 
             if estado == '':
+                print(f'{estado_anterior} | {clausula} | {estado}')
                 return True
             elif estado not in clausulas and estado != estado_anterior:
                 print ("Estado anterior || Clausula a reducir: ")
