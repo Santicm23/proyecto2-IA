@@ -1,7 +1,7 @@
 
 import time
 
-from .reglas import cambiar_signo
+from .reglas import cambiar_signo, obtener_constantes, obtener_variables
 
 
 def reducir_clausulas(clausula1: str, clausula2: str) -> str:
@@ -24,6 +24,15 @@ def reducir_clausulas(clausula1: str, clausula2: str) -> str:
     return ' ∨ '.join(l1 + l2)
 
 
+def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
+    """Reduce las clausulas de la lista de cadenas de entrada."""
+
+    constantes1 = obtener_constantes(clausula1)
+    variables1 = obtener_variables(clausula1)
+
+    constantes2 = obtener_constantes(clausula2)
+    variables2 = obtener_variables(clausula2)
+    pass
 
 def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
     """Realiza la inferencia por resolución de la cadena de entrada."""
