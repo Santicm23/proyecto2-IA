@@ -39,7 +39,9 @@ def reducir_clausulas_recursivo(
             else:
                 consts_temp = list(filter(lambda x: x != constante, constantes))
                 vars_temp = list(filter(lambda x: x != variable, variables))
-                return reducir_clausulas_recursivo(clausula_reducir, clausula_temp, consts_temp, vars_temp)
+                res = reducir_clausulas_recursivo(clausula_reducir, clausula_temp, consts_temp, vars_temp)
+                if res != clausula_reducir and res != clausula_temp:
+                    return res
     return clausula_reducir
 
 
@@ -56,7 +58,7 @@ def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
         return reducir_clausulas(clausula1, clausula2)
 
     res = reducir_clausulas_recursivo(clausula1, clausula2, constantes1, variables2)
-    if res != clausula1:
+    if res != clausula1 and res != clausula2:
         return res
     
     return reducir_clausulas_recursivo(clausula2, clausula1, constantes2, variables1)

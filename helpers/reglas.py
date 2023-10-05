@@ -2,6 +2,16 @@
 import re
 
 
+def eliminar_duplicados(lista: list[str]) -> list[str]:
+    """Elimina los elementos duplicados de una lista."""
+
+    for i in lista:
+        while lista.count(i) > 1:
+            lista.remove(i)
+    
+    return lista
+
+
 def cambiar_signo(elemento: str) -> str:
     """Cambia el signo de la cadena de entrada."""
 
@@ -16,7 +26,7 @@ def obtener_variables(clausula: str) -> list[str]:
 
     regex = r'\b[a-z][a-z1-9]*\b'
 
-    return list(re.findall(regex, clausula))
+    return eliminar_duplicados(list(re.findall(regex, clausula)))
 
 
 def obtener_constantes(clausula: str) -> list[str]:
@@ -32,7 +42,7 @@ def obtener_constantes(clausula: str) -> list[str]:
         else:
             l.append(item)
 
-    return list(filter(lambda s: not s.islower(), l))
+    return eliminar_duplicados(list(filter(lambda s: not s.islower(), l)))
 
 
 def reemplazar_variable(clausula: str, variable: str, constante: str) -> str:
