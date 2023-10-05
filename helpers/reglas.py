@@ -11,15 +11,15 @@ def cambiar_signo(elemento: str) -> str:
         return '¬' + elemento
 
 
-def obtener_variables(clausula: str) -> set[str]:
+def obtener_variables(clausula: str) -> list[str]:
     """Obtiene las variables de una clausula."""
 
     regex = r'\b[a-z][a-z1-9]*\b'
 
-    return set(re.findall(regex, clausula))
+    return list(re.findall(regex, clausula))
 
 
-def obtener_constantes(clausula: str) -> set[str]:
+def obtener_constantes(clausula: str) -> list[str]:
     """Obtiene las variables de una clausula."""
 
     regex = r'\(([^)]+)\)'
@@ -32,7 +32,7 @@ def obtener_constantes(clausula: str) -> set[str]:
         else:
             l.append(item)
 
-    return set(filter(lambda s: not s.islower(), l))
+    return list(filter(lambda s: not s.islower(), l))
 
 
 def reemplazar_variable(clausula: str, variable: str, constante: str) -> str:

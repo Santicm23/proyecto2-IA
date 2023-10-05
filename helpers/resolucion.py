@@ -24,6 +24,25 @@ def reducir_clausulas(clausula1: str, clausula2: str) -> str:
     return ' ∨ '.join(l1 + l2)
 
 
+def reducir_clausulas_recursivo(
+    clausula_reducir: str,
+    clausula_reemplazar: str,
+    constantes: list[str],
+    variables: list[str],
+) -> str:
+    for constante in constantes:
+        for variable in variables:
+            clausula_temp = reemplazar_variable(clausula_reemplazar, variable, constante)
+            res = reducir_clausulas(clausula_temp, clausula_reducir)
+            if res != clausula_reducir and res != clausula_temp:
+                return res
+            else:
+                consts_temp = list(filter(lambda x: x != constante, constantes))
+                vars_temp = list(filter(lambda x: x != variable, variables))
+                return reducir_clausulas_recursivo(clausula_reducir, clausula_temp, consts_temp, vars_temp)
+    return clausula_reducir
+
+
 def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
     """Reduce las clausulas de la lista de cadenas de entrada."""
 
@@ -35,27 +54,12 @@ def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
 
     if len(variables1) == 0 and len(variables2) == 0:
         return reducir_clausulas(clausula1, clausula2)
-    
-    print(f'Variables 1: {variables1}')
-    print(f'Variables 2: {variables2}')
-    print(f'Constantes 1: {constantes1}')
-    print(f'Constantes 2: {constantes2}')
 
-    for constante in constantes1:
-        for variable in variables2:
-            clausula_temp = reemplazar_variable(clausula2, variable, constante)
-            res = reducir_clausulas(clausula_temp, clausula1)
-            if res != clausula1 and res != clausula_temp:
-                return res
-
-    for constante in constantes2:
-        for variable in variables1:
-            clausula_temp = reemplazar_variable(clausula1, variable, constante)
-            res = reducir_clausulas(clausula_temp, clausula2)
-            if res != clausula2 and res != clausula_temp:
-                return res
+    res = reducir_clausulas_recursivo(clausula1, clausula2, constantes1, variables2)
+    if res != clausula1:
+        return res
     
-    return clausula1
+    return reducir_clausulas_recursivo(clausula2, clausula1, constantes2, variables1)
 
 
 def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
@@ -70,7 +74,7 @@ def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
         estado_anterior = estado
 
         for clausula in clausulas:
-            estado = reducir_clausulas(clausula, estado_anterior)
+            estado = reducir_clausulas_con_variables(clausula, estado_anterior)
 
             if estado == '':
                 return True

@@ -47,5 +47,55 @@ ejemplo2 = {
         '¬Hombre(Marco) ∨ ¬Gobernante(Cesar) ∨ ¬IntentaAsesinar(Marco,Cesar) ∨ ¬Leal(Marco,Cesar)',
         'IntentaAsesinar(Marco,Cesar)'
     ],
-    'pregunta': '¬Odia(Marco,Cesar)'
+    'pregunta': 'Odia(Marco,Cesar)'
+}
+
+'''
+1. ¬Niño(x1) ∨ Ama(x1,PapáNoel)
+2. ¬Ama(x2,PapáNoel) ∨ ¬Reno(y2) ∨ Ama(x2,y2)
+3. Reno(Rodolfo)
+4. NarizRoja(Rodolfo)
+5. ¬NarizRoja(x5) ∨ Raro(x5) ∨ Payaso(x5)
+6. ¬Reno(x6) ∨ ¬Payaso(x6)
+7. ¬Raro(x7) ∨ ¬Ama(Scrooge,x7)
+
+¬Niño(Scrooge)?
+'''
+
+ejemplo3 = {
+    'clausulas': [
+        '¬Niño(x1) ∨ Ama(x1,PapáNoel)',
+        '¬Ama(x2,PapáNoel) ∨ ¬Reno(y2) ∨ Ama(x2,y2)',
+        'Reno(Rodolfo)',
+        'NarizRoja(Rodolfo)',
+        '¬NarizRoja(x5) ∨ Raro(x5) ∨ Payaso(x5)',
+        '¬Reno(x6) ∨ ¬Payaso(x6)',
+        '¬Raro(x7) ∨ ¬Ama(Scrooge,x7)'
+    ],
+    'pregunta': '¬Niño(Scrooge)'
+}
+
+'''
+1. Hombre(Marco)
+2. Pompeyano(Marco)
+3. ¬Pompeyano(x3) ∨ Romano(x3)
+4. Gobernante(Cesar)
+5. ¬Romano(x5) ∨ Leal(x5,Cesar) ∨ Odia(x5,Cesar)
+6. ¬Hombre(x6) ∨ ¬Gobernante(y6) ∨ ¬IntentaAsesinar(x6,y6) ∨ ¬Leal(x6,y6)
+7. IntentaAsesinar(Marco,Cesar)
+
+Odia(Marco,Cesar)?
+'''
+
+ejemplo4 = {
+    'clausulas': [
+        'Hombre(Marco)',
+        'Pompeyano(Marco)',
+        '¬Pompeyano(x3) ∨ Romano(x3)',
+        'Gobernante(Cesar)',
+        '¬Romano(x5) ∨ Leal(x5,Cesar) ∨ Odia(x5,Cesar)',
+        '¬Hombre(x6) ∨ ¬Gobernante(y6) ∨ ¬IntentaAsesinar(x6,y6) ∨ ¬Leal(x6,y6)',
+        'IntentaAsesinar(Marco,Cesar)'
+    ],
+    'pregunta': 'Odia(Marco,Cesar)'
 }
