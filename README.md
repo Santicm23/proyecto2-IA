@@ -2,7 +2,7 @@
 # Correr el programa
 
 ```bash	
-python main.py
+python main.py <ruta-del-archivo>
 ```
 
 # Estructura del archivo
