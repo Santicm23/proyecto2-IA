@@ -120,7 +120,7 @@ ejemplo5 = {
         '¬Misil(x2) ∨ ¬Posee(Nono,x2) ∨ Vende(West,x2,Nono)',
         '¬Enemigo(x3,America) ∨ Hostil(x3)',
         '¬Misil(x4) ∨ Arma(x4)',
-        'Posee(Nono, M1)',
+        'Posee(Nono,M1)',
         'Misil(M1)',
         'Americano(West)',
         'Enemigo(Nono,America)'
