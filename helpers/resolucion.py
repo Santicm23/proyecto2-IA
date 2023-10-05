@@ -80,6 +80,7 @@ def inferencia_resolucion(clausulas: list[str], pregunta: str) -> bool:
             estado = reducir_clausulas_con_variables(clausula, estado_anterior)
 
             if estado == '':
+                print(f'{estado_anterior} | {clausula} | {estado}')
                 return True
             elif estado not in clausulas and estado != estado_anterior:
                 print(f'{estado_anterior} | {clausula} | {estado}')
