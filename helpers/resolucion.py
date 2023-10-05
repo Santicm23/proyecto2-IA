@@ -54,8 +54,9 @@ def reducir_clausulas_con_variables(clausula1: str, clausula2: str) -> str:
     constantes2 = obtener_constantes(clausula2)
     variables2 = obtener_variables(clausula2)
 
-    if len(variables1) == 0 and len(variables2) == 0:
-        return reducir_clausulas(clausula1, clausula2)
+    res = reducir_clausulas(clausula1, clausula2)
+    if res != clausula1 and res != clausula2:
+        return res
 
     res = reducir_clausulas_recursivo(clausula1, clausula2, constantes1, variables2)
     if res != clausula1 and res != clausula2:

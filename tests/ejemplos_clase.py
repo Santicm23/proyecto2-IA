@@ -99,3 +99,31 @@ ejemplo4 = {
     ],
     'pregunta': 'Odia(Marco,Cesar)'
 }
+
+
+'''
+1. ¬Americano(x1) ∨ ¬Arma(y1) ∨ ¬Vende(x1,y1,z1) ∨ ¬Hostil(z1) ∨ Criminal(x1)
+2. ¬Misil(x2) ∨ ¬Posee(Nono,x2) ∨ Vende(West,x2,Nono)
+3. ¬Enemigo(x3,America) ∨ Hostil(x3)
+4. ¬Misil(x4) ∨ Arma(x4)
+5. Posee(Nono, M1)
+6. Misil(M1)
+7. Americano(West)
+8. Enemigo(Nono,America)
+
+Criminal(West)?
+'''
+
+ejemplo5 = {
+    'clausulas': [
+        '¬Americano(x1) ∨ ¬Arma(y1) ∨ ¬Vende(x1,y1,z1) ∨ ¬Hostil(z1) ∨ Criminal(x1)',
+        '¬Misil(x2) ∨ ¬Posee(Nono,x2) ∨ Vende(West,x2,Nono)',
+        '¬Enemigo(x3,America) ∨ Hostil(x3)',
+        '¬Misil(x4) ∨ Arma(x4)',
+        'Posee(Nono, M1)',
+        'Misil(M1)',
+        'Americano(West)',
+        'Enemigo(Nono,America)'
+    ],
+    'pregunta': 'Criminal(West)'
+}
